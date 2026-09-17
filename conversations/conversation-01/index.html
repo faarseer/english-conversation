@@ -84,8 +84,7 @@
 
     .eyebrow,
     .section-number,
-    .question-group h3,
-    .note-label {
+    .question-group h3 {
       margin: 0;
       color: var(--accent);
       font-size: 0.72rem;
@@ -147,7 +146,7 @@
     }
 
     .cues li::before {
-      content: "??;
+      content: "\2014";
       margin-right: 0.6rem;
       color: var(--accent);
     }
@@ -292,42 +291,6 @@
     .reset:hover,
     .reset:focus-visible { color: var(--accent); }
 
-    .notes-intro {
-      max-width: 590px;
-      margin: 0.8rem 0 0;
-      color: var(--muted);
-    }
-
-    .notes-grid {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: clamp(1.5rem, 4vw, 3.5rem);
-      margin-top: 3.5rem;
-    }
-
-    .note {
-      min-height: 190px;
-      padding-top: 1rem;
-      border-top: 1px solid var(--line);
-    }
-
-    .note-field {
-      min-height: 145px;
-      margin-top: 0.8rem;
-      padding: 0.2rem 0;
-      outline: none;
-      color: var(--ink);
-      white-space: pre-wrap;
-    }
-
-    .note-field:empty::before {
-      content: attr(data-placeholder);
-      color: var(--quiet);
-      pointer-events: none;
-    }
-
-    .note-field:focus { box-shadow: inset 0 -1px var(--accent); }
 
     footer {
       padding-block: 2rem 3rem;
@@ -342,15 +305,12 @@
       .section-number { display: inline-block; margin-right: 0.8rem; }
       h2 { display: inline; }
       .reference-points,
-      .question-groups,
-      .notes-grid { grid-template-columns: 1fr; }
+      .question-groups { grid-template-columns: 1fr; }
       .reference-points li:nth-child(odd) { margin-right: 0; }
       .reference-points li { min-height: 0; padding-right: 0; }
       .questions-heading { align-items: start; flex-direction: column; }
       .hint { max-width: none; text-align: left; }
       .question-group { padding-block: 2rem; }
-      .notes-grid { margin-top: 1rem; }
-      .note { min-height: 165px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -370,24 +330,26 @@
 <body>
   <main>
     <nav class="site-nav" aria-label="Site navigation">
-      <a class="home-link" href="../../">← All conversations</a>
+      <a class="home-link" href="../../">&larr; All conversations</a>
     </nav>
     <header>
       <p class="eyebrow">A conversation about</p>
       <h1>Language &amp; Regional Diversity in India</h1>
-      <p class="subtitle">How language changes across home, school, region, and identity</p>
+      <!--
+      <p class="subtitle">How language changes across home, school, and region</p>
+      -->
     </header>
 
     <section aria-labelledby="why-title">
       <div class="section-grid">
         <div>
-          <p class="section-number">01 쨌 Starting point</p>
+          <p class="section-number">01 &middot; Starting point</p>
           <h2 id="why-title">Why I chose this topic</h2>
         </div>
         <ul class="cues">
-          <li>When you mentioned that English isn?셳 really your first language, I realized I know very little about languages in India.</li>
+          <li>When you mentioned that English isn&rsquo;t really your first language, I realized I know very little about languages in India.</li>
           <li>I had vaguely assumed that people in India simply used English a lot.</li>
-          <li>That made me curious about what language diversity feels like in everyday life.</li>
+          <li>That made me curious about what languages people actually speak in India.</li>
         </ul>
       </div>
     </section>
@@ -395,8 +357,8 @@
     <section aria-labelledby="korea-title">
       <div class="section-grid">
         <div>
-          <p class="section-number">02 쨌 My context</p>
-          <h2 id="korea-title">My reference point: Korea</h2>
+          <p class="section-number">02 &middot; My context</p>
+          <h2 id="korea-title">How I see Korea</h2>
         </div>
         <ul class="reference-points">
           <li>Relatively small and linguistically homogeneous</li>
@@ -410,11 +372,11 @@
     <section aria-labelledby="reflection-title">
       <div class="section-grid">
         <div>
-          <p class="section-number">03 쨌 A shift</p>
+          <p class="section-number">03 &middot; A shift</p>
           <h2 id="reflection-title">How my thinking changed</h2>
         </div>
         <p class="reflection">
-          At university, Chinese friends told me how large regional language differences could be. I first imagined <span>very strong dialects</span>. Later, I began to see how language can also follow <span>historical, cultural, and regional boundaries</span>. India brought that thought back?봮n a scale very different from what I grew up with.
+          At university, Chinese friends told me they that they could barely understand people from other regions.At that time, I mostly thought of it as <span>very strong dialects</span>. This time, I started wondering whether language differences are not only spatial, but also historical and cultural&mdash;shaped over time.
         </p>
       </div>
     </section>
@@ -422,10 +384,12 @@
     <section id="questions" aria-labelledby="questions-title">
       <div class="questions-heading">
         <div>
-          <p class="section-number">04 쨌 Talk together</p>
-          <h2 id="questions-title">Where should we begin?</h2>
+          <p class="section-number">04 &middot; Talk together</p>
+          <h2 id="questions-title">Small Topics<h2>
         </div>
-        <p class="hint">Follow whatever feels interesting. Click a question once you?셶e talked about it.</p>
+        <!--
+        <p class="hint">Just pick whatever sounds interesting.</p>
+        -->
       </div>
 
       <div class="question-groups">
@@ -440,20 +404,20 @@
           <h3>Across regions</h3>
           <button class="question" type="button" aria-pressed="false">What happens when people from different regions of India meet?</button>
           <button class="question" type="button" aria-pressed="false">How do people decide which language to use?</button>
-          <button class="question" type="button" aria-pressed="false">Is Hindi really a common shared language?봮r is that an oversimplification?</button>
+          <button class="question" type="button" aria-pressed="false">Is Hindi a common shared language&mdash;or is that an oversimplification?</button>
         </div>
 
         <div class="question-group">
           <h3>English</h3>
           <button class="question" type="button" aria-pressed="false">When do you normally use English?</button>
-          <button class="question" type="button" aria-pressed="false">Does English feel natural, practical, formal?봮r something else?</button>
+          <button class="question" type="button" aria-pressed="false">Does English feel natural, practical, formal&mdash;or something else?</button>
           <button class="question" type="button" aria-pressed="false">How did you learn it?</button>
         </div>
 
         <div class="question-group">
-          <h3>Identity</h3>
-          <button class="question" type="button" aria-pressed="false">Does speaking several languages affect your sense of identity?</button>
-          <button class="question" type="button" aria-pressed="false">Do you feel different depending on which language you?셱e speaking?</button>
+          <h3>Language</h3>
+          <button class="question" type="button" aria-pressed="false">Does speaking several languages affect your sense of language?</button>
+          <button class="question" type="button" aria-pressed="false">Do you feel different depending on which language you&rsquo;re speaking?</button>
           <button class="question" type="button" aria-pressed="false">Has living in Korea changed how you think about language?</button>
         </div>
       </div>
@@ -461,32 +425,8 @@
       <button class="reset" id="reset-questions" type="button">Reset discussed questions</button>
     </section>
 
-    <section aria-labelledby="notes-title">
-      <div class="section-grid">
-        <div>
-          <p class="section-number">05 쨌 Afterthoughts</p>
-          <h2 id="notes-title">Notes to keep</h2>
-        </div>
-        <p class="notes-intro">A little space for language worth returning to. Notes stay in this browser.</p>
 
-        <div class="notes-grid">
-          <div class="note">
-            <p class="note-label">Expressions I want to remember</p>
-            <div class="note-field" contenteditable="true" role="textbox" aria-multiline="true" data-note="remember" data-placeholder="Write here??></div>
-          </div>
-          <div class="note">
-            <p class="note-label">Things I couldn?셳 say naturally</p>
-            <div class="note-field" contenteditable="true" role="textbox" aria-multiline="true" data-note="unsaid" data-placeholder="Write here??></div>
-          </div>
-          <div class="note">
-            <p class="note-label">Interesting expressions they used</p>
-            <div class="note-field" contenteditable="true" role="textbox" aria-multiline="true" data-note="heard" data-placeholder="Write here??></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>One topic 쨌 many possible directions</footer>
+    <footer>faarseer&middot; 2026</footer>
   </main>
 
   <script>
@@ -510,11 +450,6 @@
       });
     });
 
-    document.querySelectorAll('.note-field').forEach((field) => {
-      const key = `india-conversation-note-${field.dataset.note}`;
-      field.textContent = localStorage.getItem(key) || '';
-      field.addEventListener('input', () => localStorage.setItem(key, field.innerText));
-    });
   </script>
 </body>
 </html>
