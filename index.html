@@ -1,0 +1,253 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A growing collection of visual guides for thoughtful English conversations.">
+  <title>English Conversations</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f0e7;
+      --ink: #292c29;
+      --muted: #716e66;
+      --quiet: #99948a;
+      --accent: #865b42;
+      --green: #5e7061;
+      --line: rgba(41, 44, 41, 0.15);
+      --content: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--paper); }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 3%, rgba(134, 91, 66, 0.07), transparent 24rem),
+        var(--paper);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+    }
+
+    .page {
+      width: min(calc(100% - 3rem), var(--content));
+      min-height: 100vh;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding-block: clamp(5rem, 12vw, 9rem) clamp(4rem, 9vw, 7rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow,
+    .section-label,
+    .session-number {
+      margin: 0;
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 840px;
+      margin: 1rem 0 1.5rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.4rem, 8.5vw, 7.4rem);
+      font-weight: 400;
+      letter-spacing: -0.055em;
+      line-height: 0.95;
+    }
+
+    .intro {
+      max-width: 610px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1.1rem, 1rem + 0.5vw, 1.4rem);
+    }
+
+    main {
+      flex: 1;
+      padding-block: clamp(4rem, 8vw, 7rem);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      margin: 0.45rem 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+    }
+
+    .count {
+      margin: 0;
+      color: var(--quiet);
+      font-size: 0.8rem;
+    }
+
+    .sessions {
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+      list-style: none;
+    }
+
+    .session-link {
+      display: grid;
+      grid-template-columns: minmax(80px, 0.35fr) minmax(0, 2fr) auto;
+      gap: clamp(1rem, 4vw, 3rem);
+      align-items: center;
+      min-height: 180px;
+      padding-block: 2rem;
+      border-bottom: 1px solid var(--line);
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .session-title {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.65rem, 3vw, 2.55rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .session-description {
+      max-width: 600px;
+      margin: 0.65rem 0 0;
+      color: var(--muted);
+    }
+
+    .arrow {
+      width: 2.7rem;
+      height: 2.7rem;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--accent);
+      font-size: 1.15rem;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .session-link:hover .arrow,
+    .session-link:focus-visible .arrow {
+      transform: translateX(0.25rem);
+      border-color: var(--accent);
+      background: rgba(134, 91, 66, 0.06);
+    }
+
+    .session-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 6px;
+    }
+
+    .up-next {
+      display: grid;
+      grid-template-columns: minmax(80px, 0.35fr) minmax(0, 2fr) auto;
+      gap: clamp(1rem, 4vw, 3rem);
+      align-items: center;
+      min-height: 120px;
+      color: var(--quiet);
+    }
+
+    .up-next p { margin: 0; }
+
+    .up-next-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.25rem, 2.3vw, 1.75rem);
+    }
+
+    .coming-soon {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      padding-block: 2rem 3rem;
+      border-top: 1px solid var(--line);
+      color: var(--quiet);
+      font-size: 0.76rem;
+    }
+
+    @media (max-width: 680px) {
+      .page { width: min(calc(100% - 2rem), var(--content)); }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 0.6rem; }
+      .session-link,
+      .up-next {
+        grid-template-columns: 1fr auto;
+        gap: 0.9rem;
+      }
+      .session-number { grid-column: 1 / -1; }
+      .session-link { min-height: 0; padding-block: 1.8rem; }
+      .arrow { grid-column: 2; grid-row: 2; }
+      .up-next { padding-block: 1.6rem; }
+      .coming-soon { grid-column: 2; grid-row: 2; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="eyebrow">A shared space for speaking</p>
+      <h1>English Conversations</h1>
+      <p class="intro">Visual guides for unhurried, one-on-one conversations—made to help us stay curious, find the next question, and keep talking naturally.</p>
+    </header>
+
+    <main>
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Conversation guides</p>
+          <h2>Choose a starting point</h2>
+        </div>
+        <p class="count">01 conversation</p>
+      </div>
+
+      <ol class="sessions">
+        <li>
+          <a class="session-link" href="./conversations/conversation-01/">
+            <p class="session-number">01</p>
+            <div>
+              <h3 class="session-title">Language &amp; Regional Diversity in India</h3>
+              <p class="session-description">How language changes across home, school, region, and identity.</p>
+            </div>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      </ol>
+
+      <div class="up-next" aria-label="Upcoming conversation">
+        <p class="session-number">02</p>
+        <p class="up-next-title">Education</p>
+        <p class="coming-soon">Coming soon</p>
+      </div>
+    </main>
+
+    <footer>Made for conversations, not presentations.</footer>
+  </div>
+</body>
+</html>
+

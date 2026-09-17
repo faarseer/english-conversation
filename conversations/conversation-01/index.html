@@ -1,0 +1,522 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A shared conversation guide about language and regional diversity in India.">
+  <title>Language &amp; Regional Diversity in India</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f0e7;
+      --paper-deep: #ebe3d6;
+      --ink: #292c29;
+      --muted: #716e66;
+      --quiet: #99948a;
+      --accent: #865b42;
+      --accent-soft: #e3d2c3;
+      --green: #5e7061;
+      --line: rgba(41, 44, 41, 0.15);
+      --content: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--paper);
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 3%, rgba(134, 91, 66, 0.07), transparent 24rem),
+        var(--paper);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+    }
+
+
+    .site-nav {
+      padding-top: 2rem;
+    }
+
+    .home-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding-block: 0.35rem;
+      border-bottom: 1px solid transparent;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 650;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: color 160ms ease, border-color 160ms ease;
+    }
+
+    .home-link:hover,
+    .home-link:focus-visible {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .home-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 5px;
+    }
+
+    main {
+      width: min(calc(100% - 3rem), var(--content));
+      margin-inline: auto;
+    }
+
+    header {
+      min-height: min(600px, 76vh);
+      display: grid;
+      align-content: center;
+      padding-block: 6rem 5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow,
+    .section-number,
+    .question-group h3,
+    .note-label {
+      margin: 0;
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 1rem 0 1.5rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 7.2vw, 6.7rem);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      line-height: 0.98;
+    }
+
+    .subtitle {
+      max-width: 630px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1.15rem, 1rem + 0.8vw, 1.65rem);
+      line-height: 1.45;
+    }
+
+    section {
+      padding-block: clamp(4.5rem, 8vw, 8rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(150px, 0.6fr) minmax(0, 2fr);
+      gap: clamp(2rem, 7vw, 7rem);
+    }
+
+    h2 {
+      margin: 0.45rem 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.45rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .cues {
+      display: grid;
+      gap: 1.7rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cues li {
+      max-width: 760px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.75rem);
+      line-height: 1.48;
+    }
+
+    .cues li::before {
+      content: "??;
+      margin-right: 0.6rem;
+      color: var(--accent);
+    }
+
+    .reference-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .reference-points li {
+      min-height: 145px;
+      padding: 1.5rem 1.8rem 1.5rem 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1rem + 0.3vw, 1.28rem);
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .reference-points li:nth-child(odd) { margin-right: 2rem; }
+
+    .reflection {
+      margin: 0;
+      max-width: 800px;
+      color: var(--muted);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.72rem);
+      line-height: 1.65;
+    }
+
+    .reflection span { color: var(--ink); }
+
+    #questions {
+      padding-block: clamp(5rem, 10vw, 10rem);
+    }
+
+    .questions-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: clamp(3.2rem, 7vw, 6rem);
+    }
+
+    .questions-heading h2 {
+      max-width: 670px;
+      margin-top: 0.6rem;
+      font-size: clamp(2.5rem, 5.2vw, 5rem);
+      letter-spacing: -0.03em;
+    }
+
+    .hint {
+      max-width: 235px;
+      margin: 0 0 0.35rem;
+      color: var(--quiet);
+      font-size: 0.83rem;
+      line-height: 1.45;
+      text-align: right;
+    }
+
+    .question-groups {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: clamp(2.5rem, 7vw, 7rem);
+    }
+
+    .question-group {
+      padding-block: 2.4rem 2.8rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .question-group h3 { color: var(--green); }
+
+    .question {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 1.2rem 2.4rem 1.2rem 0;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.28rem, 1.13rem + 0.55vw, 1.68rem);
+      line-height: 1.35;
+      text-align: left;
+      cursor: pointer;
+      transition: color 160ms ease, opacity 160ms ease;
+    }
+
+    .question::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0.25rem;
+      width: 0.55rem;
+      height: 0.55rem;
+      border: 1.5px solid var(--quiet);
+      border-radius: 50%;
+      transform: translateY(-50%);
+      transition: background 160ms ease, border-color 160ms ease;
+    }
+
+    .question:hover::after,
+    .question:focus-visible::after { border-color: var(--accent); }
+
+    .question:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 5px;
+      border-radius: 2px;
+    }
+
+    .question[aria-pressed="true"] {
+      color: var(--quiet);
+      opacity: 0.64;
+    }
+
+    .question[aria-pressed="true"]::after {
+      border-color: var(--accent-soft);
+      background: var(--accent-soft);
+    }
+
+    .reset {
+      display: block;
+      margin: 2rem 0 0 auto;
+      padding: 0.45rem 0;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      color: var(--quiet);
+      font: inherit;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    .reset:hover,
+    .reset:focus-visible { color: var(--accent); }
+
+    .notes-intro {
+      max-width: 590px;
+      margin: 0.8rem 0 0;
+      color: var(--muted);
+    }
+
+    .notes-grid {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(1.5rem, 4vw, 3.5rem);
+      margin-top: 3.5rem;
+    }
+
+    .note {
+      min-height: 190px;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .note-field {
+      min-height: 145px;
+      margin-top: 0.8rem;
+      padding: 0.2rem 0;
+      outline: none;
+      color: var(--ink);
+      white-space: pre-wrap;
+    }
+
+    .note-field:empty::before {
+      content: attr(data-placeholder);
+      color: var(--quiet);
+      pointer-events: none;
+    }
+
+    .note-field:focus { box-shadow: inset 0 -1px var(--accent); }
+
+    footer {
+      padding-block: 2rem 3rem;
+      color: var(--quiet);
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 760px) {
+      main { width: min(calc(100% - 2rem), var(--content)); }
+      header { min-height: 72vh; padding-block: 4rem; }
+      .section-grid { grid-template-columns: 1fr; gap: 2.4rem; }
+      .section-number { display: inline-block; margin-right: 0.8rem; }
+      h2 { display: inline; }
+      .reference-points,
+      .question-groups,
+      .notes-grid { grid-template-columns: 1fr; }
+      .reference-points li:nth-child(odd) { margin-right: 0; }
+      .reference-points li { min-height: 0; padding-right: 0; }
+      .questions-heading { align-items: start; flex-direction: column; }
+      .hint { max-width: none; text-align: left; }
+      .question-group { padding-block: 2rem; }
+      .notes-grid { margin-top: 1rem; }
+      .note { min-height: 165px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      main { width: 100%; }
+      header { min-height: 0; }
+      section { break-inside: avoid; }
+      .reset, .hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="site-nav" aria-label="Site navigation">
+      <a class="home-link" href="../../">← All conversations</a>
+    </nav>
+    <header>
+      <p class="eyebrow">A conversation about</p>
+      <h1>Language &amp; Regional Diversity in India</h1>
+      <p class="subtitle">How language changes across home, school, region, and identity</p>
+    </header>
+
+    <section aria-labelledby="why-title">
+      <div class="section-grid">
+        <div>
+          <p class="section-number">01 쨌 Starting point</p>
+          <h2 id="why-title">Why I chose this topic</h2>
+        </div>
+        <ul class="cues">
+          <li>When you mentioned that English isn?셳 really your first language, I realized I know very little about languages in India.</li>
+          <li>I had vaguely assumed that people in India simply used English a lot.</li>
+          <li>That made me curious about what language diversity feels like in everyday life.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="korea-title">
+      <div class="section-grid">
+        <div>
+          <p class="section-number">02 쨌 My context</p>
+          <h2 id="korea-title">My reference point: Korea</h2>
+        </div>
+        <ul class="reference-points">
+          <li>Relatively small and linguistically homogeneous</li>
+          <li>Regional dialects and accents do exist</li>
+          <li>I can roughly recognize several, though some sound similar to me</li>
+          <li>Most Korean speakers understand one another without changing languages</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="reflection-title">
+      <div class="section-grid">
+        <div>
+          <p class="section-number">03 쨌 A shift</p>
+          <h2 id="reflection-title">How my thinking changed</h2>
+        </div>
+        <p class="reflection">
+          At university, Chinese friends told me how large regional language differences could be. I first imagined <span>very strong dialects</span>. Later, I began to see how language can also follow <span>historical, cultural, and regional boundaries</span>. India brought that thought back?봮n a scale very different from what I grew up with.
+        </p>
+      </div>
+    </section>
+
+    <section id="questions" aria-labelledby="questions-title">
+      <div class="questions-heading">
+        <div>
+          <p class="section-number">04 쨌 Talk together</p>
+          <h2 id="questions-title">Where should we begin?</h2>
+        </div>
+        <p class="hint">Follow whatever feels interesting. Click a question once you?셶e talked about it.</p>
+      </div>
+
+      <div class="question-groups">
+        <div class="question-group">
+          <h3>Everyday language</h3>
+          <button class="question" type="button" aria-pressed="false">What language did you grow up speaking at home?</button>
+          <button class="question" type="button" aria-pressed="false">What language did you use at school?</button>
+          <button class="question" type="button" aria-pressed="false">What do you usually speak with friends?</button>
+        </div>
+
+        <div class="question-group">
+          <h3>Across regions</h3>
+          <button class="question" type="button" aria-pressed="false">What happens when people from different regions of India meet?</button>
+          <button class="question" type="button" aria-pressed="false">How do people decide which language to use?</button>
+          <button class="question" type="button" aria-pressed="false">Is Hindi really a common shared language?봮r is that an oversimplification?</button>
+        </div>
+
+        <div class="question-group">
+          <h3>English</h3>
+          <button class="question" type="button" aria-pressed="false">When do you normally use English?</button>
+          <button class="question" type="button" aria-pressed="false">Does English feel natural, practical, formal?봮r something else?</button>
+          <button class="question" type="button" aria-pressed="false">How did you learn it?</button>
+        </div>
+
+        <div class="question-group">
+          <h3>Identity</h3>
+          <button class="question" type="button" aria-pressed="false">Does speaking several languages affect your sense of identity?</button>
+          <button class="question" type="button" aria-pressed="false">Do you feel different depending on which language you?셱e speaking?</button>
+          <button class="question" type="button" aria-pressed="false">Has living in Korea changed how you think about language?</button>
+        </div>
+      </div>
+
+      <button class="reset" id="reset-questions" type="button">Reset discussed questions</button>
+    </section>
+
+    <section aria-labelledby="notes-title">
+      <div class="section-grid">
+        <div>
+          <p class="section-number">05 쨌 Afterthoughts</p>
+          <h2 id="notes-title">Notes to keep</h2>
+        </div>
+        <p class="notes-intro">A little space for language worth returning to. Notes stay in this browser.</p>
+
+        <div class="notes-grid">
+          <div class="note">
+            <p class="note-label">Expressions I want to remember</p>
+            <div class="note-field" contenteditable="true" role="textbox" aria-multiline="true" data-note="remember" data-placeholder="Write here??></div>
+          </div>
+          <div class="note">
+            <p class="note-label">Things I couldn?셳 say naturally</p>
+            <div class="note-field" contenteditable="true" role="textbox" aria-multiline="true" data-note="unsaid" data-placeholder="Write here??></div>
+          </div>
+          <div class="note">
+            <p class="note-label">Interesting expressions they used</p>
+            <div class="note-field" contenteditable="true" role="textbox" aria-multiline="true" data-note="heard" data-placeholder="Write here??></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>One topic 쨌 many possible directions</footer>
+  </main>
+
+  <script>
+    const questions = [...document.querySelectorAll('.question')];
+
+    questions.forEach((question, index) => {
+      const isDiscussed = localStorage.getItem(`india-conversation-question-${index}`) === 'true';
+      question.setAttribute('aria-pressed', String(isDiscussed));
+
+      question.addEventListener('click', () => {
+        const nextState = question.getAttribute('aria-pressed') !== 'true';
+        question.setAttribute('aria-pressed', String(nextState));
+        localStorage.setItem(`india-conversation-question-${index}`, String(nextState));
+      });
+    });
+
+    document.getElementById('reset-questions').addEventListener('click', () => {
+      questions.forEach((question, index) => {
+        question.setAttribute('aria-pressed', 'false');
+        localStorage.removeItem(`india-conversation-question-${index}`);
+      });
+    });
+
+    document.querySelectorAll('.note-field').forEach((field) => {
+      const key = `india-conversation-note-${field.dataset.note}`;
+      field.textContent = localStorage.getItem(key) || '';
+      field.addEventListener('input', () => localStorage.setItem(key, field.innerText));
+    });
+  </script>
+</body>
+</html>
+
+
